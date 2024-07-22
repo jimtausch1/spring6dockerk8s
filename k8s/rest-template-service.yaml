@@ -3,16 +3,16 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    app: rest-mvc
-  name: rest-mvc
+    app: rest-template
+  name: rest-template
 spec:
   ports:
-  - name: 8082-8082
-    port: 8082
+  - name: 8081-8081
+    port: 8081
     protocol: TCP
-    targetPort: 8082
+    targetPort: 8081
   selector:
-    app: rest-mvc
+    app: rest-template
   type: ClusterIP
 status:
   loadBalancer: {}

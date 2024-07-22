@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: rest-template
+  name: rest-template
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rest-template
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: rest-template
+    spec:
+      containers:
+      - image: spring6resttemplate:0.0.1-SNAPSHOT
+        name: spring6resttemplate
+        resources: {}
+        env:
+          - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_SPRINGAUTH_AUTHORIZATION_URI
+            value: http://auth-server:9000/oauth2/authorize
+          - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_SPRINGAUTH_TOKEN_URI
+            value: http://auth-server:9000/oauth2/token
+          - name: REST_TEMPLATE_ROOTURL
+            value: http://rest-mvc:8082
+          - name: SERVER_PORT
+            value: '8081'
+status: {}

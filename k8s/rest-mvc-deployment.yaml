@@ -18,8 +18,8 @@ spec:
         app: rest-mvc
     spec:
       containers:
-      - image: spring-6-rest-mvc:0.0.1-SNAPSHOT
-        name: spring-6-rest-mvc
+      - image: spring6restmvc:0.0.1-SNAPSHOT
+        name: spring6restmvc
         resources: {}
         env:
           - name: SPRING_PROFILES_ACTIVE
@@ -29,5 +29,5 @@ spec:
           - name: SPRING_DATASOURCE_URL
             value: jdbc:mysql://mysql:3306/restdb
           - name: SERVER_PORT
-            value: '8080'
+            value: '8082'
 status: {}

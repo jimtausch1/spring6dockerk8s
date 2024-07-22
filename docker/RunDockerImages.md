@@ -42,7 +42,7 @@ docker logs rest-mvc
 
 Run Rest MVC
 ```shell
-docker run --name rest-mvc -d -p 8081:8080 spring-6-rest-mvc:0.0.1-SNAPSHOT
+docker run --name rest-mvc -d -p 8081:8080 spring6restmvc:0.0.1-SNAPSHOT
 ```
 
 Run Rest MVC on port 8081
@@ -69,19 +69,19 @@ docker run --name gateway -d -p 8080:8080 -e SPRING_PROFILES_ACTIVE=docker --lin
 
 Run Auth Server with host name set to auth-server
 ```shell
-docker run --name auth-server -h auth-server -d -p 9000:9000 spring-6-auth-server:0.0.1-SNAPSHOT
+docker run --name auth-server -h auth-server -d -p 9000:9000 spring6authserver:0.0.1-SNAPSHOT
 ```
 
 Run rest-mvc with jwt issuer host set and link
 ```shell
-docker run --name rest-mvc -d -p 8081:8080 -e SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI=http://auth-server:9000 --link auth-server:auth-server spring-6-rest-mvc:0.0.1-SNAPSHOT
+docker run --name rest-mvc -d -p 8081:8080 -e SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI=http://auth-server:9000 --link auth-server:auth-server spring6restmvc:0.0.1-SNAPSHOT
 ```
 
 Rerun gateway with link to auth-server and rest-mvc
 ```shell
 docker stop gateway 
 docker rm gateway
-docker run --name gateway -d -p 8080:8080 -e SPRING_PROFILES_ACTIVE=docker --link auth-server:auth-server --link rest-mvc:rest-mvc spring-6-gateway:0.0.1-SNAPSHOT
+docker run --name gateway -d -p 8080:8080 -e SPRING_PROFILES_ACTIVE=docker --link auth-server:auth-server --link rest-mvc:rest-mvc spring6gateway:0.0.1-SNAPSHOT
 ```
 
 Run MySQL
